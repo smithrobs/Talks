@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=1024"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title>The Ramifications of JavaScript Everywhere</title>
+
+    <meta name="description" content="there are dragons and we all must slay them"/>
+    <meta name="author" content="Robert Smith"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic"
+          rel="stylesheet"/>
+
+    <link href="css/presentation.css" rel="stylesheet"/>
+    <link href="css/impressConsole.css" rel="stylesheet"/>
+    <link href="css/pyg-style.css" rel="stylesheet"/>
+
+    <link rel="shortcut icon" href="favicon.png"/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified
+        version of this presentation.</p>
+
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+<div id="title" class="step" data-x="-2400" data-y="0">
+    <div class="notes">
+        <ul>
+            <li>s/w consultant in IT for 14 years</li>
+            <li>etc---</li>
+            <li>So what was your first memory of JavaScript? Was it Obtrusive, Obnoxious JavaScript?</li>
+        </ul>
+        </p>
+    </div>
+
+    <h1>The Ramifications of JavaScript Everywhere</h1>
+
+    <h2>@smithrobs</h2>
+    <img src="img/js.png">
+</div>
+
+<div class="step codeSlide" data-x="0" data-y="-1000" data-scale="1">
+    <div class="notes">
+        <ul>
+            <li>From 2000, site just went down in the last week</li>
+            <li>Validations, img transitions, in-line script</li>
+        </ul>
+    </div>
+
+    Obtrusive, Obnoxious JavaScript?
+    <img src="img/motocross2.gif" style="float:right;">
+
+    <h2>http://www.microsoft.com/games/motocross2/tracks.htm</h2>
+    <pre class="pyg">
+        <div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;features.htm&quot;</span> <span
+                class="na">onmouseout=</span><span class="s">&quot;di20(&#39;features&#39;,&#39;img/features.gif&#39;);&quot;</span>
+           <span class="na">onmouseover=</span><span class="s">&quot;di20(&#39;features&#39;,&#39;img/features_F2.gif&#39;);&quot;</span><span
+                    class="nt">&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">name=</span><span class="s">&quot;features&quot;</span> <span
+                    class="na">src=</span><span class="s">&quot;img/features.gif&quot;</span> <span
+                    class="na">width=</span><span class="s">&quot;166&quot;</span>
+             <span class="na">height=</span><span class="s">&quot;32&quot;</span> <span class="na">border=</span><span
+                    class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+        </pre>
+        </div>
+    </pre>
+</div>
+
+<div class="step codeSlide" data-x="-1200" data-y="-1000" data-scale="1"
+     style="background: url('img/StarTrek-mindblown.gif'); background-size: 100% 100%;">
+    <div class="notes">
+        <ul>
+            <li>Callback hell from continuation passing style (CPS, tail calls, trampolining, oh my)</li>
+            <li>CommonJS Promises/A (https://gist.github.com/domenic/3889970)</li>
+            <li>async/await style (Generators)</li>
+        </ul>
+    </div>
+
+    <pre class="pyg" style="float:left; font-size:23px; margin-left:75px;">
+<div class="highlight"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span
+        class="s1">&#39;/first&#39;</span><span class="p">,</span> <span class="kd">function</span> <span
+        class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// there&#39;s some really great and important logic here</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span
+            class="s1">&#39;/second&#39;</span><span class="p">,</span> <span class="kd">function</span> <span
+            class="p">(</span><span class="nx">dataTwo</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// i&#39;m sure there&#39;s good stuff here too</span>
+        <span class="nx">dataTwo</span><span class="p">.</span><span class="nx">forEach</span><span
+            class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">n</span><span
+            class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">javascriptDestroyedTheWorld</span><span
+            class="p">)</span> <span class="k">return</span><span class="p">;</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span
+            class="s1">&#39;/third&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span
+            class="nx">dataThree</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="nx">dataThree</span><span
+            class="p">)</span> <span class="p">{</span>
+                    <span class="k">case</span> <span class="nx">letsExplodeCyclomaticComplexity</span><span
+            class="o">:</span>
+                        <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span
+            class="p">(</span><span class="s1">&#39;/PLEASESTOP&#39;</span><span class="p">,</span> <span class="kd">function</span> <span
+            class="p">(</span><span class="nx">argh</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;I did stuff: &#39;</span> <span
+            class="o">+</span> <span class="nx">argh</span><span class="p">);</span>
+                        <span class="p">});</span>
+                    <span class="c1">// moar! moar! moar!</span>
+                    <span class="k">default</span><span class="o">:</span>
+                        <span class="nx">alert</span><span class="p">(</span><span
+            class="s1">&#39;i quit&#39;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre>
+</div>
+    </pre>
+</div>
+
+<div class="step codeSlide" data-x="-1200" data-y="0" data-scale="1">
+    <div class="notes">
+        OH AHH ALL THESE THINGS
+        (.1 + .2)
+    </div>
+
+    <ul>
+        <li>JS != DOM</li>
+        <li>Global Vars</li>
+        <li>ASI</li>
+        <li>Hoisting</li>
+        <li>Scope</li>
+        <li>IEEE Float</li>
+        <li>with, eval, document.write</li>
+        <li>So much more!</li>
+    </ul>
+</div>
+
+<div id="watVideoSlide" class="step codeSlide" data-x="0" data-y="0" data-scale="1">
+    <div class="notes">
+        <p>type conversion</p>
+
+        <ul>
+            <li>+ serves multiple meanings (infix add, infix string cat, prefix positivity)
+                so you get string concat
+            </li>
+            <li>{} can be empty code block or empty object literal</li>
+            <li>coercion to string happens first</li>
+            <li>- is infix sub or prefix negativity</li>
+        </ul>
+        <ul>
+            <li>Array(16).join("wat")</li>
+            <li>Array(16).join("wat" + 1)</li>
+            <li>Array(16).join('wat' - 1) + " BATMAN!"</li>
+        </ul>
+    </div>
+
+    <h2 style="float:left;">"dynamic, duck" typing. @garybernhardt. http://www.destroyallsoftware.com/</h2>
+
+    <video id="garybernhardtwat" src="https://dl.dropboxusercontent.com/u/4524730/wat.webm" width="800" height="600"
+           preload="auto" controls style="float:right;">
+        <!--<source id="webm" src="assets/wat.webm" type="video/webm">-->
+    </video>
+</div>
+
+<div id="its1995" class="step" data-x="1300" data-y="0" data-scale="1">
+    <div class="notes">
+        <ul>
+            <li>
+                National Science Foundation Network (NSFNET) was retired April 1995
+            </li>
+            <li>
+                AOL, Prodigy started their reign of terror
+            </li>
+        </ul>
+    </div>
+    <h1>The year was 1995.</h1>
+
+    <pre>hello, internet.</pre>
+</div>
+
+<div class="step" data-x="2600" data-y="0" data-scale="1">
+    <div class="notes">
+        ok this is actually from '96, but you get the point. from archive.org
+    </div>
+    <img src="img/aol1996.png">
+</div>
+
+<div class="step" data-x="3600" data-y="0" data-scale=".5">
+    <div class="notes">
+        <p>I'm going to a cold, dark place for finding an emulation of the blink tag in CSS3.
+            But the blink tag was just a usability issue. Worse was to come.</p>
+
+        <p>We've committed worse sins to ourselves.</p>
+
+        <p>Now, wait. Let's back up a bit.</p>
+    </div>
+    <ul>
+        <li>WHAT ARE THIS INTERNETS?</li>
+        <span class="blink">&lt;BLINK&gt;HELP&lt;BLINK&gt;</span>
+    </ul>
+</div>
+
+<div class="step" data-x="3600" data-y="-400" data-scale=".5">
+    <div class="notes">
+        <p>89-90: Berners-Lee proposes hypertext, HTML (img from wikipedia)</p>
+
+        <p>Simplification of Standard Generalized Markup Language (SGML)</p>
+
+        <p>which came from RUNOFF (computer text formatting) in bloody 1964</p>
+    </div>
+    <h1>The year was 1989.</h1>
+
+    <h2>Or 1990.</h2>
+
+    <h2>23 years ago.</h2>
+    <img src="img/Tim_Berners-Lee.jpg" style="float:right;">
+</div>
+
+<div id="its1964" class="step" data-x="3600" data-y="-800" data-scale=".5">
+    <div class="notes">
+        Let's not go much further back or we'll be talking about vacuum tubes and punch cards
+        for the rest of the talk.
+        Let's move forward. Hope. Change. Right?
+    </div>
+
+    <h1>1964!</h1>
+</div>
+
+<div id="scheme" class="step" data-x="3600" data-y="-1200" data-scale=".5">
+    <div class="notes">
+        <ul>
+            <li>SCHEME. 1975. Gerald Sussman on left, Dan P. Friedman on right.</li>
+            <li>Dialect of lisp (actors)</li>
+            <li>Sussman worked on Scheme with Guy Steele</li>
+            <li>Friedman wrote Reasoned Schemer, is the reason we have lazy eval.</li>
+        </ul>
+    </div>
+
+    <h1>1975. Scheme (Lisp). Wizards? Magic?</h1>
+    <img src="img/sussman-friedman.jpg">
+</div>
+
+<div id="scheme-codes" class="step" data-x="3000" data-y="-1200" data-scale=".5">
+    <div class="notes">
+        Doesn't this look vaguely familiar? (functional model)
+    </div>
+        <pre>
+(set! f (lambda (n) (+ n 100)))
+(map f '(1 2 3))
+===> (101 102 103)
+        </pre>
+</div>
+
+<div id="self" class="step" data-x="3000" data-y="-800" data-scale=".5">
+    <div class="notes">
+        <ul>
+            <li>1987 - SELF - Dialect of Smalltalk (influenced by Lisp)</li>
+            <li>David Ungar/Randall Smith - Xerox/Sun. Lessons learned became Hotspot JVM.</li>
+            <li>Showing pictures because I like pictures... and to remind you: We are standing on the shoulders of
+                giants.
+            </li>
+        </ul>
+    </div>
+    <h1>1987. Self (Smalltalk).</h1>
+    <img src="img/David_Ungar.jpg">
+</div>
+
+<div id="self-quote" class="step" data-x="3000" data-y="-500" data-scale=".5">
+    <div class="notes">
+        Prototypical inheritance. Quote from Self docs.
+    </div>
+    <i>
+        "The Self language doesn't have any classes. When we want a new object, we find an existing one and copy it.
+        We can then change the copy, safe in the knowledge that we have not affected anything else."
+    </i>
+</div>
+
+<div id="java" class="step" data-x="2400" data-y="-500" data-scale=".5">
+    <div class="notes">
+        <ul>
+            <li>1995. Java. James Gosling. Bill Joy. Guy Steele. Gilad Bracha</li>
+            <li>WORA WRITE ONCE RUN NOWHERE AMIRITE.</li>
+            <li>So Java won. On the serverside. At least in 1995. Completely botched it on the client. Still botching
+                it.
+            </li>
+            <li>
+                (http://stackoverflow.com/questions/18883053/fading-one-image-out-while-another-in-using-css-transitions-on-opacity-isnt-smo)
+            </li>
+            <li>so I have one class I really like in Java. Might say it's my favorite class. Any guesses?</li>
+        </ul>
+    </div>
+    <h1>
+        1995. Java. Gosling. DAT SYNTAX
+    </h1>
+
+    <div class="container">
+        <div class="image"></div>
+        <div class="image"></div>
+    </div>
+</div>
+
+<div id="java-lols" class="step" data-x="1200" data-y="-800" data-scale="1">
+    <div class="notes">
+        <ul>
+            <li>my favorite java class</li>
+            <li>
+                http://www.quora.com/Java-programming-language/What-are-the-longest-Java-class-names-in-Java-API-or-famous-open-source-libraries
+            </li>
+            <li>Enterprise software is hard. Java is needlessly hard, callous, unforgiving, and cripcrap.</li>
+        </ul>
+    </div>
+    <h2>
+        And the award goes to:
+    </h2>
+
+    <h1>
+        InternalFrameInternalFrameTitle
+        PaneInternalFrameTitlePaneMaximize
+        ButtonWindowNotFocusedState
+    </h1>
+
+    <h2>
+        (in package com/sun/java/swing/plaf/nimbus)
+    </h2>
+</div>
+<div id="1995-revisited" class="step" data-x="1300" data-y="0" data-scale="1">
+    <div class="notes">
+        hey we're back to 1995. The 34-year old that wanted to build a flavor of scheme, right?
+    </div>
+    "I want to build a flavor of Scheme."
+</div>
+<div id="weirdo" class="step" data-x="1300" data-y="700" data-rotate="180" data-scale="1">
+    <div class="notes">
+        Netscape said: NO SIR YOU CANNOT. Unacceptable
+    </div>
+    <h1>
+        No.
+    </h1>
+    <img src="img/nope.gif">
+</div>
+<div id="supahstah" class="step" data-x="1300" data-y="1400" data-rotate="180" data-scale="1">
+    <div class="notes">
+        <p>Eich said, fine, okay have it your way.</p>
+
+        <p>Yes, it was there from the start. But bignums were not in the cards. JS had to "look like Java" only less so
+            [more like C],
+            be
+            Java's dumb kid brother or boy-hostage sidekick. Plus, I had to be done in ten days or something worse than
+            JS
+            would have happened.</p>
+
+        <p>So double by default, int under the hood, and bitwise ops are 32-bit int (uint if you use >>>). I blame
+            Java.</p>
+    </div>
+    <h1>
+        Mr. Brendan Eich
+    </h1>
+    <img src="img/BEich.jpg">
+    <img src="img/onelanguagebook.png">
+</div>
+<div id="incubation" class="step" data-x="1300" data-y="2000" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        <p>http://www.jwz.org/blog/2010/10/every-day-i-learn-something-new-and-stupid/#comment-1021</p>
+
+        <p>___Something like PHP only worse___</p>
+    </div>
+    <table>
+        <tr>
+            <th>Language</th>
+            <th>In dev (yrs)</th>
+        </tr>
+        <tr>
+            <td>Scheme</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Self</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>Java</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>Smalltalk</td>
+            <td>3?</td>
+        </tr>
+        <tr>
+            <td>Lisp</td>
+            <td>2?</td>
+        </tr>
+        <tr>
+            <td>C#</td>
+            <td>1.5</td>
+        </tr>
+        <tr>
+            <td>JavaScript</td>
+            <td>0.03</td>
+        </tr>
+    </table>
+</div>
+<div class="step" data-x="1300" data-y="2600" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        What do we do with...
+
+        We learn! We use TOOLS and TECHNIQUES!
+    </div>
+    <p>A hastily-developed language.</p>
+
+    <p>Constantly evolving technology.</p>
+
+    <p>Obsolete/draft standards.</p>
+
+    <p style="font-size:90px;">Business has needs.</p>
+
+    <p style="font-size:90px;">We have tools.</p>
+</div>
+<div class="step" data-x="1300" data-y="3200" data-rotate="180" data-scale=".5">
+    <div class="notes">
+    </div>
+    <p>JSLint/JSHint</p>
+    <img src="img/jshintr.png">
+</div>
+<div class="step" data-x="1300" data-y="3800" data-rotate="180" data-scale=".5">
+    <div class="notes">
+
+    </div>
+    <p>Mocha/QUnit/test runners/etc</p>
+
+    <pre class="pyg" style="float:left; font-size:23px; margin-left:75px;">
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">assert</span> <span class="o">=</span> <span
+        class="nx">require</span><span class="p">(</span><span class="s2">&quot;assert&quot;</span><span
+        class="p">)</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Array&#39;</span><span class="p">,</span> <span
+            class="kd">function</span><span class="p">(){</span>
+    <span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;#indexOf()&#39;</span><span class="p">,</span> <span
+            class="kd">function</span><span class="p">(){</span>
+        <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should return -1 when the value is not present&#39;</span><span
+            class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span
+            class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span
+            class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span
+            class="mi">3</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span
+            class="mi">5</span><span class="p">));</span>
+            <span class="nx">assert</span><span class="p">.</span><span class="nx">equal</span><span
+            class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span
+            class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span
+            class="mi">3</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span
+            class="mi">0</span><span class="p">));</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre>
+</div>
+    </pre>
+</div>
+<div class="step" data-x="1300" data-y="4400" data-rotate="180" data-scale=".5">
+    <div class="notes">
+
+    </div>
+    <p>Tooling constantly improving. Plato:</p>
+
+    <iframe src="http://jsoverson.github.io/plato/examples/jquery/" width="825" height="650"></iframe>
+</div>
+<div class="step" data-x="1300" data-y="5000" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        <p>yo - scaffolding</p>
+
+        <p>grunt - build/task tool</p>
+
+        <p>bower - dep mgmt (can also use npm)</p>
+    </div>
+    <p>CI/CD</p>
+
+    <img src="img/yogruntbower-toolset.png"/>
+    VS - Web Essentials.
+</div>
+<div class="step" data-x="700" data-y="4400" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        We're not like Ruby. Not like .NET.
+        Finding our own way, with our own mis-steps
+        A few things borrowed, a few things new
+        There are MANY things I am leaving out here. Explore!
+    </div>
+    <p>IIFE (Loader.define)</p>
+        <pre class="pyg" style="float:left; font-size:23px; margin-left:75px;">
+<div class="highlight"><pre><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">secret</span> <span class="o">=</span> <span
+            class="s1">&#39;stuff&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">getSecret</span><span class="o">:</span> <span class="kd">function</span> <span
+            class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">secret</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">})();</span>
+</pre>
+</div>
+    </pre>
+    <p style="clear:both;">RequireJS (Angular DI similar)</p>
+    <pre class="pyg" style="float:left; font-size:23px; margin-left:75px;">
+        <div class="highlight"><pre><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;magnets&quot;</span><span
+                class="p">],</span> <span class="kd">function</span><span class="p">(</span><span
+                class="nx">magnets</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do stuff with magnets</span>
+<span class="p">});</span>
+</pre>
+        </div>
+    </pre>
+</div>
+<div class="step" data-x="700" data-y="3800" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        <p>assignment: can't assign NaN</p>
+
+        <p>sec: can't walk stack</p>
+    </div>
+    <p>"use strict"; // gives us:</p>
+    <ul>
+        <li>NO global vars == YAY!</li>
+        <li>NO with == YAY!</li>
+        <li>'sandboxed' eval</li>
+        <li>safer assignment</li>
+        <li>del weird things like prototype</li>
+        <li>unique prop in {}, fn param names</li>
+        <li>less arguments magic</li>
+        <li>more secure</li>
+        <li>NO octal</li>
+    </ul>
+</div>
+<div class="step" data-x="700" data-y="3200" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        <ul>
+            <li>48,000+ npm packages</li>
+            <li>Reinventing the wheel (somewhat)</li>
+            <li>Is this the WORA?</li>
+            <li>Why build a native app unless you need speed?</li>
+            <li>Languages like Erlang suck up memory.</li>
+            <li>IIS isn't the fastest web server.</li>
+            <li>Apache is configuration hell.</li>
+            <li>Abstractions. - DTrace, core dumps of JS</li>
+            <li>Kids reimplementing 50-year-old ideas. Is this acceptable?</li>
+            <li>It's running companies! (Paypal, azure, etc)</li>
+        </ul>
+    </div>
+    <img src="img/nodejs.png"/>
+
+    <p>Hipsters or Revolutionaries?</p>
+    <img src="img/beardedone.gif"/>
+</div>
+<div id="inception" class="step fullbg" data-x="700" data-y="2600" data-rotate="180" data-scale=".5"
+     style="background: url('img/movies_films_i_inception_023533_-1.jpg'); background-size: 100% 100%;">
+    <div class="notes">
+        Rule of least power
+
+        Assembly language of the web?
+        Hey remember ASM? Really? How bad it sucked?
+
+        Crockford said JS is VM of the web.
+    </div>
+    <div class="drop">
+        <p>Atwood's Law.</p>
+
+        <p>"JS is the VM of the web"</p>
+
+        <p>- Crockford</p>
+    </div>
+</div>
+<div class="step" data-x="700" data-y="2000" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        'use strict'
+        Add types
+        Add classes (AHHHHH)
+        "function takes too much to type"
+    </div>
+    Destroy JavaScript?
+    <img src="img/neuromancer.png"/>
+</div>
+<!-- langs -->
+<div class="step" data-x="0" data-y="2000" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        roy - Damas-Hindley-Milner
+    </div>
+    Roy
+    <img src="img/langs/roy.png"/>
+</div>
+<div class="step" data-x="0" data-y="2600" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        elm - quicksort, pattern match
+
+        - Choose a pivot element to put in the "middle" of the sorted list.
+        - Gather all of the elements less than the pivot in `lower`.
+        - Gather all of the elements greater than the pivot in `higher`.
+        - Run `quicksort` on the `lower` and `higher` lists, sorting them.
+        - Put the sorted lists together.
+    </div>
+    Elm
+    <img src="img/langs/elm.png"/>
+</div>
+<div class="step" data-x="0" data-y="3200" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        ClojureScript - http://clojure.org/protocols
+    </div>
+    ClojureScript
+    <img src="img/langs/clj.png"/>
+</div>
+<div class="step" data-x="0" data-y="3800" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        FunScript
+    </div>
+    FunScript
+    <img src="img/langs/funscript.png"/>
+</div>
+<div class="step" data-x="0" data-y="4400" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        CoffeeScript
+    </div>
+    CoffeeScript
+    <img src="img/langs/coffee.png"/>
+</div>
+<div class="step" data-x="0" data-y="5000" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        TypeScript
+    </div>
+    TypeScript
+    <img src="img/langs/typescript.png"/>
+</div>
+<!-- end langs -->
+
+<!-- TO THE FUTURE! -->
+<div class="step" data-x="0" data-y="1200" data-rotate="180" data-scale="1">
+    <div class="notes">
+        show rasbpi, talk about nodecopters
+    </div>
+    <canvas id="futureStarfield"></canvas>
+    <!--welcome to the future.-->
+</div>
+<div class="step" data-x="-1200" data-y="1200" data-rotate="180" data-scale="1">
+    <div class="notes">
+        asm.js, pepper.js/emscripten
+
+        https://developer.mozilla.org/en-US/demos/detail/bananabread
+        http://clb.demon.fi/html5scummvm/dott/dott.html
+    </div>
+    <h1>asm.js, pepper.js/emscripten</h1>
+
+    <h2>restricted subset of JavaScript</h2>
+</div>
+<div class="step" data-x="-2400" data-y="1200" data-rotate="180" data-scale="1">
+    <div class="notes">
+        Dart? Other VMs?
+
+        IE supported window.execScript
+        https://lists.webkit.org/pipermail/webkit-dev/2011-December/018813.html
+        "[having other vms] break[s] the open web."
+    </div>
+    <p>Dart? Other VMs?</p>
+
+    <p>Client-side MVC</p>
+
+    <p>SPAs, Traditional apps obsolete?</p>
+</div>
+<div class="step" data-x="-3600" data-y="1200" data-rotate="180" data-scale="1">
+    <div class="notes">
+        webRTC, websockets, web workers, promises, reactive, SSE
+    </div>
+    <h1>"mini-standards"</h1>
+    <ul>
+        <li>WebRTC</li>
+        <li>WebSockets</li>
+        <li>SSE</li>
+        <li>Web Workers</li>
+        <li>WebGL</li>
+        <li>BONUS: Reactive</li>
+    </ul>
+</div>
+
+<div class="step" data-x="-4800" data-y="1200" data-rotate="180" data-scale="1">
+    <div class="notes">
+        Going on forever, things still changing, we're never going to all agree
+        Are standards standards if they're never standardized?
+    </div>
+    Web "Standards"
+    <img src="img/standards.png">
+    http://xkcd.com/927/
+</div>
+<div class="step" data-x="-6000" data-y="1200" data-rotate="180" data-scale="1">
+    <div class="notes">
+        Harmony/ES6
+        proxies, max/min classes, TODO more?
+        Traceur
+    </div>
+    <p>Draft Rev 21 of ES6</p>
+
+    <p>Proxies</p>
+
+    <p>Max/Min Classes</p>
+
+    <p>Generators</p>
+
+    <p>Syntax</p>
+
+    <p>AND SO MUCH MORE!!11!one!</p>
+
+    <p>BONUS: Components, Shadow DOM</p>
+</div>
+<div class="step fullbg" data-x="-4800" data-y="2400" data-rotate="180" data-scale="1">
+    <div class="notes">
+    </div>
+    <span style="color:#f00;">SUPER SECRET BONUS MOVE:</span>
+
+    <p>Learn functional programming.</p>
+    <span style="font-size:16px;">(and history. WARN: you may become caremad as we like to pretend 40-year-old concepts are new)</span>
+
+    <p style="font-size:8px;">(DAMN YOU VON NEUMANN)</p>
+
+    <img src="img/WHATTTT.gif" style="margin-top:50px;"/>
+</div>
+<div class="step fullbg" data-x="-3600" data-y="2400" data-rotate="180" data-scale="1"
+     style="background: url('img/ponies.jpg'); background-size: 100% 100%;">
+    <div class="notes">
+        http://exple.tive.org/blarg/2013/10/22/citation-needed/
+
+        * Don't reinvent the past. Be aware of it.
+        * Embrace change, no matter what that change is.
+    </div>
+    <p style="color:#000;">JavaScript is here, and it's everywhere.</p>
+    <img src="img/480px-GaGacorn.png" style="margin-top:100px;"/>
+</div>
+
+<!--
+Target is 0:50 because I want discussion.
+
+    General continued outline:
+
+One might want to dismiss JavaScript as a fad, but it's not going away.
+Prior bad experiences and unexpected results color our perception of JavaScript.
+Is there a better way? Unless you want to keep working on a COBOL backend (more power to you!),
+it's past time to sit around the projector glow and warm up to the language, ecosystem, and future possibilities.
+* We'll investigate where the sour taste of JavaScript came from,
+* how it's evolved from providing simple validations to running entire companies and even robots,
+* and offer tools and techniques so that we all may embrace the New Assembly Language.
+
+-->
+
+<!-- THE END -->
+<div id="overview" class="step" data-x="-500" data-y="1500" data-scale="10">
+    <h1>Thanks. Questions? Discussion?</h1>
+
+    <h1>&nbsp;</h1>
+
+    <h1>@smithrobs</h1>
+
+    <h1>github.com/smithrobs</h1>
+
+    <h1 style="font-size:36px;">http://www.meetup.com/phillyjs/</h1>
+    <img src="img/phillyjs-logo.png" style="float:right;"/>
+</div>
+</div>
+
+<script src="js/impress.js"></script>
+<script src="js/jquery-2.0.3.min.js"></script>
+<script src="js/impressConsole.js"></script>
+<script src="js/presentation.js"></script>
+</body>
+</html>
