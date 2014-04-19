@@ -10,19 +10,12 @@
     };
 
     $(document).ready(function () {
-        document.getElementById('garybernhardtwat').addEventListener('play', function () {
-            this.currentTime = 82;
-        }, false);
-
         $(document).on('impress:stepenter', function (e) {
             var slide = $(e.target);
             var currentSlide = slide.attr('id');
 
             //for fun js
             switch (currentSlide) {
-                case 'watVideoSlide':
-                    document.getElementById('garybernhardtwat').play();
-                    break;
                 case 'java':
                     $('.image', slide).each(function (i) {
                         if (i) {
