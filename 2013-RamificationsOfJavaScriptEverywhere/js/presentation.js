@@ -2,11 +2,42 @@
     var api = impress();
     api.init();
     impressConsole().init();
+    
+    var registerKeyEvent = function(keyCodes, handler, window) {
+    if (window === undefined) {
+        window = consoleWindow;
+    }
 
+    // prevent default keydown action when one of supported key is pressed
+    window.document.addEventListener("keydown", function ( event ) {
+        if ( !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && keyCodes.indexOf(event.keyCode) !== -1) {
+            event.preventDefault();
+        }
+    }, false);
+
+    // trigger impress action on keyup
+    window.document.addEventListener("keyup", function ( event ) {
+        if ( !event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey && keyCodes.indexOf(event.keyCode) !== -1) {
+                handler();
+                event.preventDefault();
+        }
+    }, false);
+    };
+    
+    registerKeyEvent([81], function() {
+        var elem = document.getElementById('bananaBreadDemo');
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        }
+    }, window);
+    
     var cleanPresentation = function () {
         $('#java .image').removeClass('start end');
         $('#overview').removeClass('fadeIn');
-        document.getElementById('garybernhardtwat').pause();
     };
 
     $(document).ready(function () {
@@ -29,6 +60,30 @@
                 case 'overview':
                     slide.addClass('fadeIn');
                     break;
+                case 'bbVideo':
+                    var elem = document.getElementById('bananaBreadDemo');
+                    elem.play();
+                    break;
+                case 'watVideoSlide':
+                    $('#term_demo').terminal(function(command, term) {
+                        if (command !== '') {
+                            try {
+                                var result = window.eval(command);
+                                if (result !== undefined) {
+                                    term.echo(new String(result));
+                                }
+                            } catch(e) {
+                                term.error(new String(e));
+                            }
+                        } else {
+                           term.echo('');
+                        }
+                    }, {
+                        greetings: 'Let\'s have fun with JavaScript!',
+                        name: 'js_demo',
+                        height: 200,
+                        prompt: '> '});
+                    $('#term_demo').focus();
                 default:
                     break;
             }

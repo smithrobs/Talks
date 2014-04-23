@@ -166,6 +166,13 @@ a:focus {
     line-height: 1.5;
 }
 
+#its1995.step {
+    opacity: 0.3 !important;
+}
+#its1995.step.active {
+    opacity: 1 !important;
+}
+
 /*
     ... and we enhance the styles for impress.js.
 
@@ -173,7 +180,7 @@ a:focus {
 */
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.3;
+    opacity: 0;
 
     -webkit-transition: opacity 1s;
     -moz-transition: opacity 1s;
@@ -266,14 +273,14 @@ a:focus {
 }
 
 .blink {
-    -webkit-animation: blink 1s steps(5, start) infinite;
-    -moz-animation: blink 1s steps(5, start) infinite;
-    -ms-animation: blink 1s steps(5, start) infinite;
-    -o-animation: blink 1s steps(5, start) infinite;
-    animation: blink 1s steps(5, start) infinite;
+    -webkit-animation: ramificationblink 1s steps(5, start) infinite;
+    -moz-animation: ramificationblink 1s steps(5, start) infinite;
+    -ms-animation: ramificationblink 1s steps(5, start) infinite;
+    -o-animation: ramificationblink 1s steps(5, start) infinite;
+    animation: ramificationblink 1s steps(5, start) infinite;
 }
 
-@keyframes blink {
+@keyframes ramificationblink {
     0% {
         color: white;
     }
@@ -282,7 +289,7 @@ a:focus {
     }
 }
 
-@-webkit-keyframes blink {
+@-webkit-keyframes ramificationblink {
     0% {
         color: white;
     }

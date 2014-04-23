@@ -15,6 +15,7 @@
     <link href="css/presentation.css" rel="stylesheet"/>
     <link href="css/impressConsole.css" rel="stylesheet"/>
     <link href="css/pyg-style.css" rel="stylesheet"/>
+    <link href="css/jquery-terminal.css" rel="stylesheet"/>
 
     <link rel="shortcut icon" href="favicon.png"/>
     <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
@@ -34,7 +35,7 @@
 <div id="title" class="step" data-x="-2400" data-y="0">
     <div class="notes">
         <ul>
-            <li>s/w consultant in IT for 14 years</li>
+            <li>s/w consultant for 15 years</li>
             <li>etc---</li>
             <li>So what was your first memory of JavaScript? Was it Obtrusive, Obnoxious JavaScript?</li>
         </ul>
@@ -127,8 +128,8 @@
 
 <div class="step codeSlide" data-x="-1200" data-y="0" data-scale="1">
     <div class="notes">
-        OH AHH ALL THESE THINGS
-        (.1 + .2)
+        ALL THESE "BAD" THINGS associated with JS
+        <p>weak typing</p>
     </div>
 
     <ul>
@@ -139,6 +140,7 @@
         <li>Scope</li>
         <li>IEEE Float</li>
         <li>with, eval, document.write</li>
+        <li>typeof</li>
         <li>So much more!</li>
     </ul>
 </div>
@@ -156,55 +158,24 @@
             <li>- is infix sub or prefix negativity</li>
         </ul>
         <ul>
-            <li>Array(16).join("wat")</li>
-            <li>Array(16).join("wat" + 1)</li>
+            <li>.1+.2</li>
+            <li>[1,2,3]+[4,5,6]</li>
+            <li>[]+{}</li>
+            <li>{}+[]</li>
             <li>Array(16).join('wat' - 1) + " BATMAN!"</li>
+            <li>Array(20).map(function(elem) { return 'a'; }); // diff between undefined and never assigned</li>
+            <li>null == undefined</li>
         </ul>
     </div>
 
-    <h2 style="float:left;">"dynamic, duck" typing. @garybernhardt. http://www.destroyallsoftware.com/</h2>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-</div>
-<div class="step" data-x="0" data-y="0" data-scale="1">
-        <div class="notes">
-        <p>type conversion</p>
-
-        <ul>
-            <li>+ serves multiple meanings (infix add, infix string cat, prefix positivity)
-                so you get string concat
-            </li>
-            <li>{} can be empty code block or empty object literal</li>
-            <li>coercion to string happens first</li>
-            <li>- is infix sub or prefix negativity</li>
-        </ul>
-        <ul>
-            <li>Array(16).join("wat")</li>
-            <li>Array(16).join("wat" + 1)</li>
-            <li>Array(16).join('wat' - 1) + " BATMAN!"</li>
-        </ul>
-    </div>
-    <span style="font-size:28px;">
-    Array(16).join('wat' - 1) + " BATMAN!"
-    "NaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaN BATMAN!"
-        </span>
+    <div id="term_demo" class="terminal" style="height:600px;"></div>
 </div>
     
 <div id="its1995" class="step" data-x="1300" data-y="0" data-scale="1">
     <div class="notes">
         <ul>
-            <li>
-                National Science Foundation Network (NSFNET) was retired April 1995
-            </li>
-            <li>
-                AOL, Prodigy started their reign of terror
-            </li>
+            <li>National Science Foundation Network (NSFNET) was retired April 1995</li>
+            <li>AOL, Prodigy started their reign of terror</li>
         </ul>
     </div>
     <h1>The year was 1995.</h1>
@@ -336,6 +307,9 @@
 <div id="java-lols" class="step" data-x="1200" data-y="-800" data-scale="1">
     <div class="notes">
         <ul>
+            <li>’92 - objects were going to save the world. distrib objects were the future! CORBA, applets</li>
+            <li>in ’95 - “A blue-collar language"</li>
+            <li>Oracle owns and licenses the trademark of JavaScript</li>
             <li>my favorite java class</li>
             <li>
                 http://www.quora.com/Java-programming-language/What-are-the-longest-Java-class-names-in-Java-API-or-famous-open-source-libraries
@@ -435,24 +409,21 @@
 </div>
 <div class="step" data-x="1300" data-y="2600" data-rotate="180" data-scale=".5">
     <div class="notes">
-        What do we do with...
-
-        We learn! We use TOOLS and TECHNIQUES!
+        Tools like our brain/tools/languages/etc
     </div>
     <p>A hastily-developed language.</p>
 
     <p>Constantly evolving technology.</p>
 
     <p>Obsolete/draft standards.</p>
-
-    <p style="font-size:90px;">Business has needs.</p>
-
-    <p style="font-size:90px;">We have tools.</p>
+    <br/>
+    <p style="font-size:84px;">We provide value to businesses with tools.</p>
 </div>
 <div class="step" data-x="1300" data-y="3200" data-rotate="180" data-scale=".5">
     <div class="notes">
+        Opinionated/Not opinionated/pluggable
     </div>
-    <p>JSLint/JSHint</p>
+    <p>JSLint/JSHint/ESLint</p>
     <img src="img/jshintr.png">
 </div>
 <div class="step" data-x="1300" data-y="3800" data-rotate="180" data-scale=".5">
@@ -492,22 +463,52 @@
     <div class="notes">
 
     </div>
-    <p>Tooling constantly improving. Plato:</p>
+    <p>Plato:</p>
 
-    <iframe src="http://jsoverson.github.io/plato/examples/jquery/" width="825" height="650"></iframe>
+    <iframe src="vid/Plato-JS.html" width="825" height="650"></iframe>
 </div>
 <div class="step" data-x="1300" data-y="5000" data-rotate="180" data-scale=".5">
     <div class="notes">
         <p>yo - scaffolding</p>
 
-        <p>grunt - build/task tool</p>
+        <p>grunt/gulp - build/task tool</p>
 
         <p>bower - dep mgmt (can also use npm)</p>
     </div>
-    <p>CI/CD</p>
+    <p>Scaffold/CI/CD/Dependency Mgmt</p>
 
-    <img src="img/yogruntbower-toolset.png"/>
+    <img src="img/yogruntbower-toolset.png" style="margin-left:-150px;"/>
+</div>
+<div class="step" data-x="1300" data-y="5600" data-rotate="180" data-scale=".5">
+    <div class="notes">
+        <p>Needs 2013 update 2 RC</p>
+        <p>ZenCoding: div#id, input[type="text"]</p>
+    </div>
+    <img src="img/vsweb-logo.png" style="vertical-align: middle;">
     VS - Web Essentials.
+    <br/>
+    <br/>
+    <ul>
+        <li>JSHint</li>
+        <li>ZenCoding</li>
+        <li>Bundle JS/CSS</li>
+        <li>JS/CSS Intellisense</li>
+        <li>.ts/.less/.coffee/.md</li>
+    </ul>
+</div>
+<div class="step" data-x="700" data-y="5000" data-rotate="180" data-scale=".5">
+    <div style="background-color:#FFF;padding:10px;width:100%;">
+        <img src="img/ntvs-logo.png" style="vertical-align: middle;">
+    </div>
+    <br/>
+    <ul>
+        <li>Debugging!</li>
+        <li>npm GUI!</li>
+        <li>Profiling!</li>
+        <li>Azure Deploy!</li>
+        <li>assert runner!</li>
+        <li>Alpha!</li>
+    </ul>
 </div>
 <div class="step" data-x="700" data-y="4400" data-rotate="180" data-scale=".5">
     <div class="notes">
@@ -515,6 +516,9 @@
         Finding our own way, with our own mis-steps
         A few things borrowed, a few things new
         There are MANY things I am leaving out here. Explore!
+        <p>Talk a bit about RequireJS/AMD, and how Browserify can work with the web</p>
+        <p>CommonJS > AMD</p>
+        <p>http://unscriptable.com/code/AMD-vs-CommonJS/#0</p>
     </div>
     <p>IIFE (Loader.define)</p>
         <pre class="pyg" style="float:left; font-size:23px; margin-left:75px;">
@@ -523,24 +527,20 @@
             class="s1">&#39;stuff&#39;</span><span class="p">;</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="nx">getSecret</span><span class="o">:</span> <span class="kd">function</span> <span
-            class="p">()</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">secret</span><span class="p">;</span>
-        <span class="p">}</span>
+            class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">secret</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">})();</span>
-</pre>
-</div>
-    </pre>
-    <p style="clear:both;">RequireJS (Angular DI similar)</p>
+<span class="p">})();</span></pre>
+</div></pre>
+    <p style="clear:both;">RequireJS/AMD (Angular DI)</p>
     <pre class="pyg" style="float:left; font-size:23px; margin-left:75px;">
-        <div class="highlight"><pre><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;magnets&quot;</span><span
+<div class="highlight"><pre><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;magnets&quot;</span><span
                 class="p">],</span> <span class="kd">function</span><span class="p">(</span><span
                 class="nx">magnets</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// do stuff with magnets</span>
 <span class="p">});</span>
 </pre>
-        </div>
-    </pre>
+        </div></pre>
+<p style="clear:both;">CommonJS/Browserify</p>
 </div>
 <div class="step" data-x="700" data-y="3800" data-rotate="180" data-scale=".5">
     <div class="notes">
@@ -564,7 +564,9 @@
 <div class="step" data-x="700" data-y="3200" data-rotate="180" data-scale=".5">
     <div class="notes">
         <ul>
-            <li>48,000+ npm packages</li>
+            <li>1994 - Netscape Enterprise Server</li>
+            <li>Just a bit under 70,000 packages (was 48,000+)</li>
+            <li>npm raised $2.6m seed investment</li>
             <li>Reinventing the wheel (somewhat)</li>
             <li>Is this the WORA?</li>
             <li>Why build a native app unless you need speed?</li>
@@ -584,12 +586,12 @@
 <div id="inception" class="step fullbg" data-x="700" data-y="2600" data-rotate="180" data-scale=".5"
      style="background: url('img/movies_films_i_inception_023533_-1.jpg'); background-size: 100% 100%;">
     <div class="notes">
-        Rule of least power
+        <p>Rule of least power - least powerful language suitable to task at hand</p>
 
-        Assembly language of the web?
-        Hey remember ASM? Really? How bad it sucked?
+        <p>Assembly language of the web?</p>
+        <p>Hey remember ASM? Really? How bad it sucked?</p>
 
-        Crockford said JS is VM of the web.
+        <p>Crockford said JS is VM of the web.</p>
     </div>
     <div class="drop">
         <p>Atwood's Law.</p>
@@ -601,38 +603,41 @@
 </div>
 <div class="step" data-x="700" data-y="2000" data-rotate="180" data-scale=".5">
     <div class="notes">
-        'use strict'
-        Add types
-        Add classes (AHHHHH)
-        "function takes too much to type"
+        <p>'use strict'</p>
+        <p>Add types</p>
+        <p>Add classes (AHHHHH)</p>
+        <p>"function takes too much to type"</p>
+        <p>https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS</p>
     </div>
     Destroy JavaScript?
     <img src="img/neuromancer.png"/>
+    <p style="font-size:30px;"><span style="font-size:54px;color:#FF0;margin-right:5px;">200+</span> Compile-to-JS Languages</p>
 </div>
 <!-- langs -->
 <div class="step" data-x="0" data-y="2000" data-rotate="180" data-scale=".5">
     <div class="notes">
-        roy - Damas-Hindley-Milner
+        roy - Damas-Hindley-Milner type system - "deduce the most general type of a given program without the need of any type annotations or other hints supplied by the programmer"
     </div>
     Roy
     <img src="img/langs/roy.png"/>
 </div>
 <div class="step" data-x="0" data-y="2600" data-rotate="180" data-scale=".5">
     <div class="notes">
-        elm - quicksort, pattern match
+        <p>elm - quicksort, pattern match</p>
 
-        - Choose a pivot element to put in the "middle" of the sorted list.
-        - Gather all of the elements less than the pivot in `lower`.
-        - Gather all of the elements greater than the pivot in `higher`.
-        - Run `quicksort` on the `lower` and `higher` lists, sorting them.
-        - Put the sorted lists together.
+        <p>Choose a pivot element to put in the "middle" of the sorted list</p>
+        <p>Gather all of the elements less than the pivot in `lower`</p>
+        <p>Gather all of the elements greater than the pivot in `higher`</p>
+        <p>Run `quicksort` on the `lower` and `higher` lists, sorting them</p>
+        <p>Put the sorted lists together</p>
     </div>
     Elm
     <img src="img/langs/elm.png"/>
 </div>
 <div class="step" data-x="0" data-y="3200" data-rotate="180" data-scale=".5">
     <div class="notes">
-        ClojureScript - http://clojure.org/protocols
+        <p>ClojureScript - http://clojure.org/protocols</p>
+        <p>Polymorphism via protocols</p>
     </div>
     ClojureScript
     <img src="img/langs/clj.png"/>
@@ -653,7 +658,7 @@
 </div>
 <div class="step" data-x="0" data-y="5000" data-rotate="180" data-scale=".5">
     <div class="notes">
-        TypeScript
+        TypeScript -- the future is next!
     </div>
     TypeScript
     <img src="img/langs/typescript.png"/>
@@ -674,10 +679,39 @@
 
         https://developer.mozilla.org/en-US/demos/detail/bananabread
         http://clb.demon.fi/html5scummvm/dott/dott.html
+        
+        pepper plugin (PNaCl)
+        explain emscripten
     </div>
     <h1>asm.js, pepper.js/emscripten</h1>
 
     <h2>restricted subset of JavaScript</h2>
+</div>
+<div class="step" data-x="-1200" data-y="1800" data-rotate="180" data-scale="1">
+    <div class="notes">
+        funny that type coercion sneaks in
+    </div>
+    subset for 32-bit int arithmetic
+    <img src="img/asmjs-subtypes.png">
+<div class="highlight" ><pre><span style="color: #007020; font-weight: bold">function</span> add1(x) {
+    x <span style="color: #666666">=</span> x<span style="color: #666666">|</span><span style="color: #40a070">0</span><span style="color: #666666">;</span> <span style="color: #60a0b0; font-style: italic">// x : int</span>
+<span style="color: #60a0b0; font-style: italic"></span>    <span style="color: #007020; font-weight: bold">return</span> (x<span style="color: #666666">+</span><span style="color: #40a070">1</span>)<span style="color: #666666">|</span><span style="color: #40a070">0</span><span style="color: #666666">;</span>
+}
+</pre></div>
+</div>
+<div id="bbVideo" class="step" data-x="-1200" data-y="2400" data-rotate="180" data-scale="1">
+    <video id="bananaBreadDemo" width="640" height="360" controls="controls">
+        <source src="vid/BananaBread.mp4" type="video/mp4" />
+    </video>
+</div>
+<div class="step" data-x="-2400" data-y="2400" data-rotate="180" data-scale="1">
+    <div class="notes">
+        <p>Example: Code coverage with Istanbul</p>
+        <p>Mention sweet.js?</p>
+        <p>Source maps - Lump in a statement here</p>
+    </div>
+    <h2>ESPRIMA & ASTs</h2>
+    <img src="img/esprima.png">
 </div>
 <div class="step" data-x="-2400" data-y="1200" data-rotate="180" data-scale="1">
     <div class="notes">
@@ -689,15 +723,15 @@
     </div>
     <p>Dart? Other VMs?</p>
 
-    <p>Client-side MVC</p>
-
+    <p>A million client-side MVCs</p>
+    
     <p>SPAs, Traditional apps obsolete?</p>
 </div>
 <div class="step" data-x="-3600" data-y="1200" data-rotate="180" data-scale="1">
     <div class="notes">
-        webRTC, websockets, web workers, promises, reactive, SSE
+        also: promises, postMessage
     </div>
-    <h1>"mini-standards"</h1>
+    <h1 style="text-decoration:underline">"mini-standards"</h1>
     <ul>
         <li>WebRTC</li>
         <li>WebSockets</li>
@@ -719,11 +753,14 @@
 </div>
 <div class="step" data-x="-6000" data-y="1200" data-rotate="180" data-scale="1">
     <div class="notes">
-        Harmony/ES6
-        proxies, max/min classes, TODO more?
-        Traceur
+        <li>Was Draft 21 when I first gave this talk</li>
+        <li>Harmony/ES6</li>
+        <li>proxies, max/min classes, more?</li>
+        <li>class keyword, ctor, proto methods/getset, subclass, super avail</li>
+        <li>ARROWS =></li>
+        <li>Traceur</li>
     </div>
-    <p>Draft Rev 22 of ES6</p>
+    <p>Draft Rev 23 of ES6</p>
 
     <p>Proxies</p>
 
@@ -736,6 +773,23 @@
     <p>AND SO MUCH MORE!!11!one!</p>
 
     <p>BONUS: Components, Shadow DOM</p>
+</div>
+<div class="step" data-x="-6000" data-y="1800" data-rotate="180" data-scale="1">
+    <div class="notes">
+        <p>We killed applets, Flash, Silverlight... client-side apps next</p>
+        <p>"The cost of writing JavaScript is just too high"</p>
+    </div>
+    <img src="img/dontpanic.jpg">
+    <ul>
+        <li>Don't focus on shiny objects...</li>
+        <li>...but keep your eyes open.</li>
+    </ul>
+</div>
+<div class="step" data-x="-6000" data-y="2400" data-rotate="180" data-scale="1">
+    <div class="notes">
+        Alan Kay - The best way to predict the future is to invent it.
+    </div>
+    "In 10 years, we'll all be writing in a functional programming style that compiles down to JavaScript."<br/><br/>@markstarkman
 </div>
 <div class="step fullbg" data-x="-4800" data-y="2400" data-rotate="180" data-scale="1">
     <div class="notes">
@@ -788,12 +842,13 @@ it's past time to sit around the projector glow and warm up to the language, eco
 
     <h1 style="font-size:36px;">http://www.meetup.com/phillyjs/</h1>
     <h1 style="font-size:36px;">http://www.meetup.com/Lehigh-Valley-Javascripters/</h1>
-    <img src="img/lvjs.jpeg" style="width:200px;float:right;"/>
+    <img src="img/phillyjs-logo.png" style="width:200px;float:right;"/>
 </div>
 </div>
 
 <script src="js/impress.js"></script>
 <script src="js/jquery-2.0.3.min.js"></script>
+<script src="js/jquery.terminal-0.8.7.min.js"></script>
 <script src="js/impressConsole.js"></script>
 <script src="js/presentation.js"></script>
 </body>

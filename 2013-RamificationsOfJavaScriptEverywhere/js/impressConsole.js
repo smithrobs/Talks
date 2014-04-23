@@ -206,6 +206,23 @@
                 }
             }, false);
         };
+        
+        var consoleOnLoad = function() {
+	        var slideView = consoleWindow.document.getElementById('slideView');
+	        var preView = consoleWindow.document.getElementById('preView');
+
+		// Firefox:
+		slideView.contentDocument.body.classList.add('impress-console');
+		preView.contentDocument.body.classList.add('impress-console');
+		
+		// Chrome:
+	        slideView.addEventListener('load', function() {
+		        slideView.contentDocument.body.classList.add('impress-console');
+	        });
+	        preView.addEventListener('load', function() {
+		        preView.contentDocument.body.classList.add('impress-console');
+	        });
+        };        
     
         var open = function() {
             if(top.isconsoleWindow){ 
@@ -224,6 +241,8 @@
                 consoleWindow.impress = window.impress;
                 // We set this flag so we can detect it later, to prevent infinite popups.
                 consoleWindow.isconsoleWindow = true;
+                // Set the onload function:
+                consoleWindow.onload = consoleOnLoad;
                 // Add clock tick
                 consoleWindow.timerStart = new Date();
                 consoleWindow.timerReset = timerReset;
