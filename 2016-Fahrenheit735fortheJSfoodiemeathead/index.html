@@ -1,0 +1,753 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>fahrenheit 735</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<link rel="stylesheet" href="css/storytime.css">
+
+	<style>
+		img.robsecret {
+			animation-play-state: paused;
+			animation-duration: 3s;
+			animation-delay: 5s;
+			animation-name: slidein;
+			animation-iteration-count: 2;
+  			animation-direction: alternate;
+			margin-left: 150%;
+			position: absolute;
+			left:0px;
+			top:0px;
+		}
+
+		@keyframes slidein {
+			from {
+				margin-left: 150%;
+			}
+
+			to {
+				margin-left: 95%;
+			}
+		}
+	</style>
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				Fahrenheit 735 for the JS foodie meathead
+
+<img src="data:image/png;base64,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" style="display:none;"/>
+				
+				<p>
+					<img data-src="img/grill.png" />
+					<canvas id="canvas_smoker_smoke" style="position:absolute;margin-left:50%;left:-55px;"></canvas>
+				</p>
+				<p style="text-align:right;color:cyan;">@smithrobs</p>
+				<aside class="notes">
+				</aside>
+			</section>
+			<section>
+				<p>wooo i'm <span style="color:cyan;">@smithrobs</span>!</p>
+				<p class="fragment" style="font-size:28px;">software consultant ~17yrs</p>
+				<p class="fragment" style="font-size:28px;">purveyor of fine artisanal javascripts</p>
+				<p class="fragment" style="font-size:28px;">C# is my jawn (I kinda hate that word?)</p>
+				<p class="fragment" style="font-size:28px;">never met a language I didn't like</p>
+				<p class="fragment" style="font-size:28px;">full-stack, free-range, gmo-free</p>
+				<p class="fragment" style="font-size:28px;">available for heavy metal concerts</p>
+				<p class="fragment" style="font-size:28px;">... and software consultations!</p>
+				<img data-src="img/whoo.png" class="robsecret"/>
+				<aside class="notes">
+					TODO: add the usual boring "who am I" crap to gloss over
+					Strong opinions, loosely held
+				</aside>
+			</section>
+			<section>
+				<div class="stretch">
+<div class="stars"></div>
+<div class="twinkling"></div>
+<div class="clouds"><h1><br/><br/>story time!</h1></div>
+</div>
+				<aside class="notes">
+					TODO: story time!!!! (tell a introspective story of how I got into smoking meat)
+				</aside>
+			</section>
+			<section>
+				<h1>Why are we here?</h2>
+				<ul>
+					<li class="fragment">Smoking meat</li>
+					<li class="fragment">Bluetooth</li>
+					<li class="fragment">JavaScript</li>
+				</ul>
+				<aside class="notes">
+					Here's the "magic 3" for the 45 minutes I hope to keep your attention span
+				</aside>
+			</section>
+			<!-- smoking meat -->			
+			<section data-background-image="img/ronmeat.gif">
+				<h1>I - SMOKING MEAT</h1>
+				<aside class="notes">
+					Smoking meat? Kosher? joke? - be careful! Warning to non-meat eaters: there will be meat.
+				</aside>
+			</section>
+			<!-- History? -->
+			<section>
+				<section data-background-image="img/Barbacoa_en_Hidalgo.JPG">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p><span style="color:#F99;">Barbacoa (barba'koa)</span> is a form of cooking meat that originated in the Caribbean with the Taíno people, from which the term
+					"barbecue" derives.</p></span>
+				</section>					
+				<section style="background-color:#000;">
+				<p>Barbecuing is done slowly over low, indirect heat and the food is flavored by the smoking process.</p>
+				<img data-src="img/bbqpig.jpg"/>
+				</section>
+				<section data-background-image="img/IMG_0435.png">
+				<div style="background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">
+				Smoking is the process of flavoring, cooking, and/or preserving food by exposing it to smoke from burning or smoldering material,
+				most often wood.
+				</div>
+				</section>
+				<section>
+					<pre><code data-trim data-noescape>
+var areWeSmokingMeat = () => !Grilling && BBQ && SmokingViaWood;
+
+(() => {
+	var meat = buyMeat();
+	prep(meat);
+	var rub = new Rub();
+	rub.apply(meat);
+	var fire = startFire();
+	fire.addWood(random);
+	fire.addMeat(meat);
+	setTimeout(() => {
+		eat(meat);
+	}, time);
+})();
+					</code></pre>
+				</section>
+			</section>
+			<!-- Types of meat to smoke -->
+			<section>
+				<h1 style="font-size:84px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">What to smoke, Rob?</h1>
+				<section data-background-image="img/2013-05-27-18.24.07.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>0xBEEF</p></div>
+					<aside class="notes">
+						Not my pic. Shredded beef, even burgers
+					</aside>
+				</section>
+				<section data-background-image="img/IMG_1665.JPG">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>Pork</p></div>
+				</section>
+				<section data-background-image="img/IMG_0992.JPG">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>Ribs</p></div>
+				</section>
+				<section data-background-image="img/IMG_0421.JPG">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>!!!!!!!! BACON !!!!!!!!</p></div>
+				</section>
+				<section data-background-image="img/IMG_1062.JPG">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>Chicken</p></div>
+					<aside class="notes">
+						TECHNICALLY smoking; cornell chicken
+					</aside>
+				</section>
+				<section data-background-image="img/IMG_0456.JPG">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>Turkey</p></div>
+				</section>
+				<section data-background-image="img/smoked-fish-2.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>Fish</p></div>
+					<aside class="notes">
+						Not my pic. Mention caution around mixing fish smokers
+					</aside>
+				</section>
+				<section data-background-image="img/lamblamb.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>Lamb</p></div>
+					<aside class="notes">
+						Not my pic.
+					</aside>
+				</section>
+				<section data-background-image="img/Pulled-Beef-1.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>EVERYTHING</p></div>
+					<aside class="notes">
+						Not my pic.
+						Potatoes.
+						Corn.
+						Exotic meats.
+					</aside>
+				</section>
+			</section>
+			<section>
+				<h1 style="background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">Basics</h1>
+				<section data-background-image="img/Houstons-best-Meat-Market.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">
+					Sourcing meat
+					</div>
+					<aside class="notes">
+						"Quality" grocery stores<br/>
+						Warehouse stores have surprisingly decent meat<br/>
+						Prime!<br/>
+						Befriend your local butcher<br/>
+					</aside>				
+				</section>
+				<section data-background-image="img/seasonal-cooks-spice-rubs-646.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">
+					Prep (rubs, marinating)
+					</div>
+					<aside class="notes">
+						Lots of options here...
+					</aside>
+				</section>
+				<section data-background-image="img/20100428-smoke-wood-types.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">
+					Wood
+					</div>
+					<aside class="notes">
+						apple, whiskey, cherry, etc.
+					</aside>
+				</section>
+				<section data-background-image="img/schrodengers-cat-500.jpg">		
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">
+					Thermodynamics
+					</div>
+					<div class="fragment" style="font-size:30px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">
+					Maillard reaction
+					</div>
+					<aside class="notes">
+						Radiant heat -> convection (external) -> conduction (internal)<br/>
+						Leave bones in, if anything to regulate heat<br/>
+						Carryover cooking<br/>
+						"Good cooking is finding the proper combination of heat and time."
+						MY-YARD - Heat + Sugars + Amino Acids = Golden Brown Delicious
+					</aside>
+				</section>
+				<section data-background-image="img/IMG_3779.jpg">		
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">
+					Fuel types
+					</div>
+					<aside class="notes">
+						Charcoal
+						Lump charcoal
+						Electric
+						Propane/NG
+					</aside>
+				</section>
+				<section>
+					<p>Smoker diaries & scientific method</p>
+					<ul>
+						<li>Date</li>
+						<li>Meat notes (source, price, prep)</li>
+						<li>Progress: time, temp, meat temp, amb. temp</li>
+						<li>Finishing/serving</li>
+						<li>Tasting notes</li>
+						<li>Retrospective</li>
+					</ul>
+					<aside class="notes">
+						Observe<br/>
+						Think<br/>
+						Form Hypothesis<br/>
+						Predict<br/>
+						Gather Data & Refine<br/>
+						Develop Theory<br/>
+					</aside>
+				</section>
+			</section>		
+			<section>
+				<h1 style="font-size:84px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">Getting personal</h1>
+				<section data-background-image="img/IMG_3771.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>Weber Smokey Mountain (WSM) 18"</p></div>
+					<aside class="notes">
+					</aside>
+				</section>
+				<section data-background-image="img/81sgx9cNr4L._SL1500_.jpg">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>Rapidfire Chimney Starter</p></div>
+					<aside class="notes">
+					</aside>
+				</section>
+				<section data-background-image="img/IMG_1124.png">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">				
+						<ul>
+							<li>Kingsford Charcoal</li>
+							<li>Various woods (apple, whiskey, cherry...)</li>
+							<li>Room and storage</li>
+						</ul>
+						<aside class="notes">
+						</aside>
+					</div>
+				</section>
+				<section data-background-image="img/Jordan-Belfort-Throws-Out-Money-The-Wolf-of-Wall-Street.gif">
+					<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;"><p>$400 or less</p></div>
+					<aside class="notes">
+						2 person house. WSM is a great starter - lots of online resources, easy setup, low maintenance<br/>
+						Barrel and drum; Offset side firebox; Cabinet
+					</aside>
+				</section>				
+			</section>
+			<section>
+				<h1>Resources</h1>
+				<p>http://virtualweberbullet.com/</p>
+				<p>http://amazingribs.com/</p>
+				<p>http://www.bbq-brethren.com/forum/</p>
+				<p>Many books</p>
+				<p>google.com</p>
+				<aside class="notes">
+					Meathead: The Science of Great Barbecue and Grilling by Meathead Goldwyn 
+					Franklin Barbecue: A Meat-Smoking Manifesto by Aaron Franklin
+					Smoking Meat: The Essential Guide to Real Barbecue by Jeff Phillips
+				</aside>
+			</section>
+			
+			<!-- TRANSITION -->
+			<section data-background-image="img/81AstH2w5dL._SL1500_.jpg">
+			<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;">
+				<p>Consistent temps are a key component to smoking.</p>
+				<p class="fragment">225-275°F is a good spot to be in.</p>
+				<p class="fragment">Bi-metal thermos are junk.*
+				<p class="fragment">* junk is probably a strong word</p>
+				<p class="fragment">Enter... the Maverick 735!</p>
+				</div>
+			</section>
+
+			<!-- bluetooth -->
+			<section>
+				<h1>II - BLUETOOTH</h1>
+				<img data-src="img/bluetooth_logo.png" />
+				<aside class="notes">
+					Audience participation? Any BT experts?
+
+					Fun fact: The Bluetooth logo is a bind rune merging the Younger Futhark runes Runic letter (Hagall) and Runic letter (Bjarkan), Harald's initials.
+					Tenth-century king Harald Bluetooth who united dissonant Danish tribes into a single kingdom and, according to legend, introduced Christianity as well.
+					(King of Denmark and Norway)
+				</aside>
+			</section>
+			<section>
+				<h1><img data-src="img/siren.gif" style="width:7%"/> Beefy spec alert <img data-src="img/siren.gif" style="width:7%"/></h1>
+				<aside class="notes">
+					Must agree that the BT SIG has succeeded in shepherding a spec that is everything to everyone
+					IoT in v4.2 and v5 (announced June '16)
+				</aside>
+			</section>
+			<section>
+				<h1>#Lazyweb</h1>
+				<p style="font-size:12pt;">Bluetooth is a wireless technology standard for exchanging data over short distances (using short-wavelength UHF radio waves in the ISM band from 2.4 to 2.485 GHz[4]) from fixed and mobile devices, and building personal area networks (PANs). Invented by telecom vendor Ericsson in 1994,[5] it was originally conceived as a wireless alternative to RS-232 data cables. It can connect several devices, overcoming problems of synchronization.</p>
+				<p style="font-size:12pt;">Bluetooth is managed by the Bluetooth Special Interest Group (SIG), which has more than 25,000 member companies in the areas of telecommunication, computing, networking, and consumer electronics.[6] The IEEE standardized Bluetooth as IEEE 802.15.1, but no longer maintains the standard. The Bluetooth SIG oversees development of the specification, manages the qualification program, and protects the trademarks.[7] A manufacturer must make a device meet Bluetooth SIG standards to market it as a Bluetooth device.[8] A network of patents apply to the technology, which are licensed to individual qualifying devices.</p>
+<p style="font-size:12pt;">Bluetooth operates at frequencies between 2402 and 2480 MHz, or 2400 and 2483.5 MHz including guard bands 2 MHz wide at the bottom end and 3.5 MHz wide at the top.[14] This is in the globally unlicensed (but not unregulated) Industrial, Scientific and Medical (ISM) 2.4 GHz short-range radio frequency band. Bluetooth uses a radio technology called frequency-hopping spread spectrum. Bluetooth divides transmitted data into packets, and transmits each packet on one of 79 designated Bluetooth channels. Each channel has a bandwidth of 1 MHz. It usually performs 800 hops per second, with Adaptive Frequency-Hopping (AFH) enabled.[14] Bluetooth low energy uses 2 MHz spacing, which accommodates 40 channels.</p>
+<p style="font-size:12pt;">Bluetooth is a packet-based protocol with a master-slave structure. One master may communicate with up to seven slaves in a piconet. All devices share the master's clock. Packet exchange is based on the basic clock, defined by the master, which ticks at 312.5 µs intervals. Two clock ticks make up a slot of 625 µs, and two slots make up a slot pair of 1250 µs. In the simple case of single-slot packets the master transmits in even slots and receives in odd slots. The slave, conversely, receives in even slots and transmits in odd slots. Packets may be 1, 3 or 5 slots long, but in all cases the master's transmission begins in even slots and the slave's in odd slots.</p>
+<p style="font-size:12pt;">The above is valid for "classic" BT. Bluetooth Low Energy, introduced in the 4.0 specification, uses the same spectrum but somewhat differently; see Bluetooth low energy#Radio interface.</p>
+				<!-- Source: wikipedia -->
+				<aside class="notes">
+					TL;DR: In 1989, Swedes in Ericcson Mobile developed a "short-link" packet-based master-slave radio frequency data exchange.
+				</aside>
+			</section>
+			<section>
+				<h1>BT 4.0 / BTLE</h1>
+				<p style="font-size:12pt;">The Bluetooth SIG completed the Bluetooth Core Specification version 4.0 (called Bluetooth Smart) and has been adopted as of 30 June 2010. It includes Classic Bluetooth, Bluetooth high speed and Bluetooth low energy protocols. Bluetooth high speed is based on Wi-Fi, and Classic Bluetooth consists of legacy Bluetooth protocols.</p>
+<p style="font-size:12pt;">Bluetooth low energy, previously known as Wibree,[60] is a subset of Bluetooth v4.0 with an entirely new protocol stack for rapid build-up of simple links. As an alternative to the Bluetooth standard protocols that were introduced in Bluetooth v1.0 to v3.0, it is aimed at very low power applications running off a coin cell. Chip designs allow for two types of implementation, dual-mode, single-mode and enhanced past versions.[61] The provisional names Wibree and Bluetooth ULP (Ultra Low Power) were abandoned and the BLE name was used for a while. In late 2011, new logos "Bluetooth Smart Ready" for hosts and "Bluetooth Smart" for sensors were introduced as the general-public face of BLE.[62]</p>
+<p style="font-size:12pt;">Bluetooth low energy (Bluetooth LE, BLE, marketed as Bluetooth Smart[1]) is a wireless personal area network technology designed and marketed by the Bluetooth Special Interest Group aimed at novel applications in the healthcare, fitness, beacons,[2] security, and home entertainment industries.[3] Compared to Classic Bluetooth, Bluetooth Smart is intended to provide considerably reduced power consumption and cost while maintaining a similar communication range.</p>
+				<!-- Source: wikipedia -->
+				<aside class="notes">
+					TL;DR: BT Smart offers lower throughput, no voice, BUT lower latency, lower power
+				</aside>
+			</section>
+			<section>
+				<h1>BT 5.0</h1>
+				<p>Announced in June 2016</p>
+				<p class="fragment">4x range</p>
+				<p class="fragment">2x speed</p>
+				<p class="fragment">8x capacity</p>
+				<p class="fragment">Connectionless services</p>
+			</section>
+			<section data-background-image="img/IoTFridge.png">
+				<h1 style="text-transform:none;position: absolute;left: 50%;top: -750%;">IoT</h1>
+			</section>
+			<section>
+				Great. What do we need to know?
+				<section>
+					<h1>Central</h1>
+					<p>Scans for other devices</p>
+					<aside class="notes">
+						Generic Attributes (GATT)<br/>
+						Per-RIFF-aral<br/>
+						Leader/"GATT Client" - can connect to multiple peripherals
+					</aside>
+				</section>
+				<section>
+					<h1>Peripheral</h1>
+					<p>Advertises and waits for connections</p>
+					<aside class="notes">
+						Follower/"GATT Server" - can connect to one central
+					</aside>
+				</section>
+				<section>
+					<h1>Paring</h1>
+					<p style="font-style:italic">(maybe)</p>
+					<aside class="notes">
+						"Just Works", advertisements. After paring, we are bidirectional
+					</aside>
+				</section>
+				<section>
+					<img src="img/GATTProfileHierarchy.png">
+				</section>
+				<section>
+					<h1>Profile</h1>
+					<p>...let's call it a contract</p>
+					<aside class="notes">
+						A Profile doesn't actually exist on the BLE peripheral itself, it's simple a pre-defined collection of Services. EX: Heart Rate Profile
+					</aside>
+				</section>
+				<section>
+					<h1>Services</h1>
+					<p>Has UUID</p>
+					<p>1+ characteristics</p>
+					<p>Standardized services</p>
+					<p>Custom services</p>
+					<aside class="notes">
+						
+					</aside>
+				</section>
+				<section>
+					<h1>Characteristics</h1>
+					<p>"The meat"</p>
+					<p>Has UUID</p>
+					<p>Read/write</p>
+					<p>Standard or custom</p>
+					<aside class="notes">
+						
+					</aside>
+				</section>
+				<section>
+					<h1>And more!</h1>
+					<p>Declarations</p>
+					<p>Descriptors</p>
+					<p>Permissions</p>
+					<p>Handles</p>
+					<aside class="notes">
+						
+					</aside>					
+				</section>
+			</section>
+			<section>
+				<h1>Mobile App</h1>
+				<img src="img/IMG_3789.PNG" />
+				<aside class="notes">
+					What's missing? No temp history!
+				</aside>
+			</section>
+			<section data-background-image="img/flag.gif">
+				<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;">
+					<strong style="font-size:92px;background: -webkit-linear-gradient(#f00,#fff,#00f);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">THIS IS AMERICA</strong><br/>
+					INFORMATION WANTS TO BE FREE<span style="font-size:24px;vertical-align:top;">*</span><br/>
+					<span style="font-size:20px;">* Ecopragmatists apply directly to Stewart Brand's forehead</span>
+					</div>
+			</section>
+			<section>
+				<h1>Part 3</h1>
+				<section>
+					<br/>
+					<img data-src="img/javascript.png"/>
+				</section>
+				<section>
+					<img data-src="img/realjs.png"/>
+				</section>
+			</section>
+			<section data-background-image="img/a_shorttake_denali_150831.jpg">
+				<div style="font-size:48px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;">
+					Why JavaScript:<br/><br/>"Because it's there."<br/><span style="font-size:32px; width:100%;text-align:right;margin-left: 100px;">- George Mallory??</span>
+				</div>
+			</section>
+			<section>
+				<p><img data-src="img/noble-logo.png"/></p>
+				"A Node.js BLE (Bluetooth Low Energy) central module."
+				<aside class="notes">
+					There's also bleno, which is the peripheral module<br/>
+					Mac, Win, Linux supported
+				</aside>
+			</section>
+			<section>
+				<p>Reverse engineering the Maverick 735</p>
+				<section>
+					<p>Bootstrap noble:</p>
+					<pre><code data-trim data-noescape>
+var noble = require('noble');
+
+noble.on('stateChange', function (state) {
+    if (state === 'poweredOn') {
+        console.log('bt on, scanning...');
+        noble.startScanning(serviceUuids, false);
+    } else {
+        console.log('bt off!');
+        noble.stopScanning();
+    }
+});
+					</code></pre>
+				</section>
+				<section>
+					♫ Set your device into pairing mode... ♫<br/>
+					(Make sure your central's Bluetooth is on!)
+				</section>
+				<section>
+					<p>Discover the peripheral's advertisement</p>
+					<pre><code data-trim data-noescape>
+noble.on('discover', function (peripheral) {
+
+// peripheral.advertisement ===
+{ localName: undefined,
+  txPowerLevel: undefined,
+  manufacturerData: undefined,
+  serviceData: [],
+  serviceUuids: [ '4e7777fb78c44bc7a8ac3a95dcdbb041' ] }
+
+// continued...
+
+}
+					</code></pre>
+				</section>
+				<section>
+					<img data-src="img/paring_request.png"/>
+				</section>
+				<section>
+					<p>Connect to the peripheral; setup reconnect</p>
+					<pre><code data-trim data-noescape>
+noble.on('discover', function (peripheral) {
+
+// ... hello again! 
+
+    peripheral.connect(function (error) {
+        peripheral.once('disconnect', function () {
+            console.log(`disconnected from peripheral!
+trying to reconnect in 5 secs...`);
+            setTimeout(function () {
+                console.log('trying to reconnect...');
+                noble.startScanning(serviceUuids, false);
+            }, 5000);
+        });
+
+	// more coming soon...
+    });
+});
+					</code></pre>
+					<aside class="notes">
+						Don't talk to me about callback hell
+					</aside>
+				</section>
+				<section>
+					<p>List services and characteristics</p>
+					<pre><code data-trim data-noescape>
+noble.on('discover', function (peripheral) {
+    /// etc...
+    peripheral.connect(function (error) {
+        peripheral.discoverAllServicesAndCharacteristics(
+	  function (error, services, characteristics){
+            for (var i in services) {
+                console.log('uuid: %s', services[i].uuid);
+            }
+            for (var i in characteristics) {
+                (function (characteristic) {
+                    characteristic.read(function (error, data) {
+                        console.log('uuid: %s', characteristic.uuid);
+                        console.log(data);
+                    });
+                })(characteristics[i]);
+            }
+        });
+    });
+});
+					</code></pre>
+					<aside class="notes">
+					</aside>
+				</section>
+				<section>
+					<p>Discovered services:</p>
+					<pre><code data-trim data-noescape>
+'4e7777fb78c44bc7a8ac3a95dcdbb041'  // the primary info service
+'180f'                              // GATT profile: Battery Service
+'460927b8c25b49e6b8a0e671e51e8d52'  // write request service
+					</code></pre>
+					<aside class="notes">
+						write request - maybe firmware update? probe display switch?
+					</aside>
+				</section>
+				<section>
+					<p>Discovered characteristics:</p>
+					<pre><code data-trim data-noescape>
+'e363fa23599a4772bd4d341fdbca0464' // undefined
+'a0ef6f5f5bc24816ab74545be9dd321c' // undefined
+'5e1e6870a6b645718bfd5fe8a70600f0' // d8 03 04 00
+'e73c489ab8bb494e86c501fd7341f217' // 17 01
+'21646fb8e8844760a844bb2ef97ee1d7' // 00 02 00 00
+'80a6c886eac2489d80dcd264dfc210c2' // 18 01
+'3adb754def9a4bde95a5ab833c28ff11' // ea 00 00 00
+'3e430fdd525b455a8ab29dc9dbb15f07' // 31 00
+'b99c84e57b984efb91bcc89928104309' // d6 00 00 00
+'43536d938bd6451d8f2ec54b0516fe8b' // 00 00
+'68b7f40ca262462495d3405295bdf2fb' // d6 00 00 00
+'ec11f02897004cd7bd4d971283b1ea65' // 32 2e 30 30 2d 32 2e 30 30
+'2a19'                             // 32
+'f4f43b6c513d4707b1adb0bbd0609f66' // 19 3a 01 01
+					</code></pre>
+					<aside class="notes">
+					</aside>
+				</section>
+				<section>
+					<p>Discovered characteristics:</p>
+					<pre><code data-trim data-noescape>
+'e363fa23599a4772bd4d341fdbca0464' // undefined
+'a0ef6f5f5bc24816ab74545be9dd321c' // undefined
+'5e1e6870a6b645718bfd5fe8a70600f0' // d8 03 04 00
+'e73c489ab8bb494e86c501fd7341f217' // 17 01 (117h = 279d)
+'21646fb8e8844760a844bb2ef97ee1d7' // 00 02 00 00
+'80a6c886eac2489d80dcd264dfc210c2' // 18 01 (118h = 280d)
+'3adb754def9a4bde95a5ab833c28ff11' // ea 00 00 00
+'3e430fdd525b455a8ab29dc9dbb15f07' // 31 00 (31h = 49d)
+'b99c84e57b984efb91bcc89928104309' // d6 00 00 00
+'43536d938bd6451d8f2ec54b0516fe8b' // 00 00 (0)
+'68b7f40ca262462495d3405295bdf2fb' // d6 00 00 00
+'ec11f02897004cd7bd4d971283b1ea65' // 32 2e 30 30 2d 32 2e 30 30
+'2a19'                             // 32 (50h)
+'f4f43b6c513d4707b1adb0bbd0609f66' // 19 3a 01 01
+					</code></pre>
+					<aside class="notes">
+						little endian, 16 bit
+					</aside>
+				</section>
+				<section>
+					<pre style="width:75px;"><code>17 01</code></pre>
+					<p class="fragment">117h</p>
+					<p class="fragment">279d</p>
+					<p class="fragment">279 - 54 = 225</p>
+					<p class="fragment">225°F!</p>
+				</section>
+				<section>
+					<p>Discovered characteristics:</p>
+					<pre><code data-trim data-noescape>
+'e363fa23599a4772bd4d341fdbca0464' // undefined
+'a0ef6f5f5bc24816ab74545be9dd321c' // undefined
+'5e1e6870a6b645718bfd5fe8a70600f0' // d8 03 04 00
+'e73c489ab8bb494e86c501fd7341f217' // Probe 1 temp!
+'21646fb8e8844760a844bb2ef97ee1d7' // 00 02 00 00
+'80a6c886eac2489d80dcd264dfc210c2' // Probe 2 temp!
+'3adb754def9a4bde95a5ab833c28ff11' // ea 00 00 00
+'3e430fdd525b455a8ab29dc9dbb15f07' // Probe 3 temp!
+'b99c84e57b984efb91bcc89928104309' // d6 00 00 00
+'43536d938bd6451d8f2ec54b0516fe8b' // Probe 4 temp!
+'68b7f40ca262462495d3405295bdf2fb' // d6 00 00 00
+'ec11f02897004cd7bd4d971283b1ea65' // 32 2e 30 30 2d 32 2e 30 30
+'2a19'                             // GATT Battery Characteristic
+'f4f43b6c513d4707b1adb0bbd0609f66' // 19 3a 01 01
+					</code></pre>
+					<aside class="notes">
+						Who knows about the other stuff?<br/>
+						there's also properties and permissions that could help you out
+					</aside>
+				</section>
+				<section>
+					<p>Read and watch characteristics:</p>
+					<pre><code data-trim data-noescape>
+peripheral.discoverServices(services, function (error, services) {
+  for (var i in services) {
+    if (services[i].uuid === '4e7777fb78c44bc7a8ac3a95dcdbb041') {
+      var tempCharacteristics = ['e73c489ab8bb494e86c501fd7341f217']; // probe 1
+      svc.discoverCharacteristics(tempCharacteristics,
+	  function (error, characteristics) {
+        for (var c in characteristics) {
+          (function (characteristic) {
+            characteristic.on('read', function (data, isNotification) {
+              var rawTemp = data.readUInt16LE(0);
+              // do stuff
+            }
+            characteristic.notify(true, function (error) {
+              // force notification, can also do subscribe
+            }
+}}}}}} // there's now a shortage at the curly bracket store
+					</code></pre>
+					<aside class="notes">
+						This is inside peripheral.connect
+					</aside>
+				</section>
+			</section>
+			<section>
+				<h1>Slap on a frontend</h1>
+				<img data-src="img/smokegraph.png"/>
+			</section>
+			<section>
+				<h1>Live Demo/Pitch</h1>
+				<img data-src="img/stan.gif"/>
+				<aside class="notes">
+					chart.js<br/>
+					sqlite/DAL<br/>
+					react<br/>
+				</aside>
+			</section>
+			<section>
+				<h1>Product backlog</h1>
+				<ul>
+					<li>Finish notifications</li>
+					<li>Responsive</li>
+					<li>True smoker diary</li>
+					<li>Save to S3</li>
+					<li>Arduino/raspbi/ESP8622</li>
+					<li>Typescript?</li>
+					<li>Testing?</li>
+			</section>
+			<section data-background-image="img/Ajf9g3D.jpg">
+				<p class="fragment" style="background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;">Remember to step away from the keyboard</p>
+				<p class="fragment" style="background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;">(It'll make you better at the keyboard)</p>
+				<p class="fragment" style="background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;">Try something new.</p>
+				<p class="fragment" style="background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;">Fail.</p>
+				<p class="fragment" style="background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;">Keep trying.</p>
+			</section>
+			<section data-background-image="img/IMG_1557.jpg">
+				<p style="font-size:36px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px;border-radius:25px;text-align:right;margin-left:30%;">Thank you for not drooling.<br/><br/>Questions/comments/concerns?</p>
+				<br/><br/>
+				<p style="font-size:26px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;text-align:right;margin-left:30%;color:cyan;">https://github.com/smithrobs/fahrenheit735 <img src="img/octocat.png" style="width:50px;vertical-align:bottom;"/></p>
+				<p style="font-size:30px;background-color:rgba(0, 0, 0, 0.6);padding:0px 50px 0px 50px;border-radius:25px;text-align:right;margin-left:65%;color:cyan;">@smithrobs <img src="img/Twitter_Logo_White_On_Image.svg" style="width:50px;vertical-align:bottom;"/></p>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script src="js/smoke.js"></script>
+
+	<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				var state = Reveal.getState();
+				if (state.indexh === 1 && state.indexv === 0) {
+					// easter egg
+					console.log('easter egg');
+					document.getElementsByClassName("robsecret")[0].style.animationPlayState = 'running';
+				}
+			} );
+		</script>
+</body>
+
+</html>
